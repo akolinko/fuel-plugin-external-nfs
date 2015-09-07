@@ -11,7 +11,7 @@ class cindernfs::params {
 
   } elsif($::osfamily == 'RedHat') {
     $required_packages      = [ 'rpcbind', 'nfs-utils', 'nfs-utils-lib',
-                                'libevent', 'key-utils', 'libtirpc', 'libgssglue' ]
+                                'libevent', 'keyutils', 'libtirpc', 'libgssglue' ]
     $package_name           = 'openstack-cinder'
     $volume_service_name    = 'openstack-cinder-volume'
 
