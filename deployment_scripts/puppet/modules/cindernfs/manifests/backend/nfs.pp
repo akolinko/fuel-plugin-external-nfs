@@ -48,13 +48,14 @@ define cindernfs::backend::nfs (
     ensure => running,
   }
 
-  service {'rpcbind':
-    ensure    => running,
-    enable    => true,
-    hasstatus => true,
-    require   => [Package['rpcbind'], Package['nfs-utils']],
+  if $::osfamily == 'RedHat' {
+    service {'rpcbind':
+      ensure    => running,
+      enable    => true,
+      hasstatus => true,
+      require   => [Package['rpcbind'], Package['nfs-utils']],
+    }
   }
-
 
   file { $nfs_shares_config:
     content => "${content}\n",
